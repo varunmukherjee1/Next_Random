@@ -1,4 +1,5 @@
 import React from 'react'
+import Feed from '@/components/Feed'
 
 const Home:React.FC = () => {
   return (
@@ -12,9 +13,7 @@ const Home:React.FC = () => {
         Next-Prompts is an open-source AI prompting too for modern world to discover, create and share creative prompts.
       </p>
 
-      {/* Feed */}
-
-      
+      <Feed/>
     </section>
   )
 }
