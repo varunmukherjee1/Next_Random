@@ -11,7 +11,7 @@ interface Props {
 
 const Nav:React.FC<Props> = () => {
 
-  const isUserLoggedIn = true;
+  const {data: session} = useSession();
   const [providers,setProviders] = useState<any>(null);
   const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
 
@@ -24,7 +24,9 @@ const Nav:React.FC<Props> = () => {
     checkProviders();
   },[])
 
-  const signOut = () => {}
+  const signOutFun = () => {
+    signOut()
+  }
 
   return (
     <nav className = "flex-between w-full mb-16 pt-3">
@@ -41,19 +43,20 @@ const Nav:React.FC<Props> = () => {
 
       {/* Desktop Navigation */}
       <div className = "sm:flex hidden">
-        {isUserLoggedIn? (
+        {session?.user ? (
           <div className = "flex gap-3 md:gap-5">
             <Link href = "/create-prompt" className = "black_btn">
               Create Post
             </Link>
 
-            <button type = "button" onClick = {signOut} className = "outline_btn">
+            <button type = "button" onClick = {signOutFun} className = "outline_btn">
               Sign Out
             </button>
 
             <Link href = "/profile">
               <Image
-                src = "/assets/images/logo.svg"
+                //@ts-ignore
+                src = {session?.user.image}
                 className = "rounded-full"
                 width={37}
                 height={37}
@@ -81,10 +84,11 @@ const Nav:React.FC<Props> = () => {
 
       {/* Mobile Nav */}
       <div className = "sm:hidden flex relative">
-            {isUserLoggedIn? (
+            {session?.user ? (
               <div className = "flex">
                 <Image
-                  src = "/assets/images/logo.svg"
+                  //@ts-ignore
+                  src = {session?.user.image}
                   className = "rounded-full"
                   width={37}
                   height={37}

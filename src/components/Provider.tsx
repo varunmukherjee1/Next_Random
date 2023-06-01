@@ -2,15 +2,16 @@
 
 import React from 'react'
 import { SessionProvider } from 'next-auth/react'
+import type { Session } from 'next-auth'
+import type { AppProps } from 'next/app'
 
 interface Props {
     children: React.ReactNode,
-    session: any
 }
 
 const Provider:React.FC<Props> = (props) => {
   return (
-    <SessionProvider session = {props.session}>
+    <SessionProvider>
       {props.children}
     </SessionProvider>
   )
