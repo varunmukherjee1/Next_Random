@@ -35,14 +35,22 @@ const handler = NextAuth({
             }
         },
         session: async (props) => {
-            const sessionUser = await User.findOne({email: props.session.user?.email})
 
-            if(props.session.user){
-                //@ts-ignore
-                props.session.user.id = sessionUser._id.toString()
+            try {
+                const sessionUser = await User.findOne({email: props.session.user?.email})
+    
+                if(props.session.user){
+                    //@ts-ignore
+                    props.session.user.id = sessionUser._id.toString()
+                }
+    
+                return props.session
+                
+            } catch (error) {
+                console.log("Session Error :-");
+                console.log(error);
+                return props.session
             }
-
-            return props.session
         }
     }
     

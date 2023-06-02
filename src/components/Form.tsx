@@ -5,17 +5,19 @@ import Link from 'next/link'
 
 interface Props {
     type: string,
-    post: any,
-    setPost: any,
-    submitting: any,
-    handleSubmit: any
+    post: {
+      prompt: string,
+      tag: string
+    },
+    setPost: React.Dispatch<React.SetStateAction<{
+        prompt: string;
+        tag: string;
+    }>>,
+    submitting: boolean,
+    handleSubmit: (e: React.FormEvent) => {}
 }
 
 const Form:React.FC<Props> = (props) => {
-
-  const handleSubmit = () => {
-
-  }
 
   return (
     <section className = "w-full max-w-full flex-start flex-col">
@@ -27,7 +29,7 @@ const Form:React.FC<Props> = (props) => {
       </p>
 
       <form
-        onSubmit = {handleSubmit}
+        onSubmit = {props.handleSubmit}
         className = "mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
       >
 
@@ -54,7 +56,7 @@ const Form:React.FC<Props> = (props) => {
           <span  className = "font-satoshi font-semibold text-base text-gray-700">
             Tag {' '} 
             <span className = "font-normal">
-              (#product, #webdevelopment, #idea)
+              (#product, #webdevelopment, #idea, etc.)
             </span>
           </span>
 
@@ -85,7 +87,7 @@ const Form:React.FC<Props> = (props) => {
               disabled = {props.submitting}
               className = "px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
             >
-              {props.submitting? `${props.type}...`:`${props.type}`}
+              {props.submitting? `${props.type}ing...`:`${props.type}`}
             </button>
         </div>
 
