@@ -53,7 +53,7 @@ const Nav:React.FC<Props> = () => {
               Sign Out
             </button>
 
-            <Link href = "/profile">
+            <Link href = {`/profile`}>
               <Image
                 //@ts-ignore
                 src = {session?.user.image}
@@ -99,7 +99,7 @@ const Nav:React.FC<Props> = () => {
                 {toggleDropdown && (
                   <div className = "dropdown">
                     <Link
-                      href = "/profile"
+                      href = {`/profile`}
                       className = "dropdown_link"
                       onClick = {() => setToggleDropdown(false)}
                     >
