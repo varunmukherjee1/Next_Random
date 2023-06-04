@@ -12,14 +12,34 @@ type Prompt =  {
 interface Props {
     name: string,
     desc: string,
-    data: string,
-    handleEdit: string,
-    handleDelete: string
+    data: Prompt[],
+    handleEdit: () => void,
+    handleDelete: () => void
 }
 
-const Profile = () => {
+const Profile: React.FC<Props> = (props) => {
   return (
-    <div>Profile</div>
+    <section className = "w-full">
+        <h1 className = 'head_text text-left'>
+            <span className = "blue_gradient">{props.name} Profile,</span>
+        </h1>
+        <p className = 'desc text-left'>{props.desc}</p>
+
+        <div className = 'mt-10 prompt_layout'>
+            {
+                props.data.map((post,i) => {
+                    return (
+                        <PromptCard
+                            key = {i}
+                            post = {post}
+                            handleEdit = {() => {}}
+                            handleDelete = {() => {}}
+                        />
+                    )
+                })
+            }
+        </div>
+    </section>
   )
 }
 
