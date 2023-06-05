@@ -33,7 +33,7 @@ const Profile: React.FC<Props> = (props) => {
                             key = {i}
                             post = {post}
                             handleEdit = {() => {props.handleEdit(post)}}
-                            handleDelete = {() => {}}
+                            handleDelete = {() => {props.handleDelete(post)}}
                         />
                     )
                 })

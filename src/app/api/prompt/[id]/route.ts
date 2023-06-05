@@ -30,7 +30,7 @@ export const GET = async (req: NextApiRequest, {params}) => {
     }    
 }
 //@ts-ignore
-export const PATCH = async (req: NextApiRequest, {params}) => {
+export const PATCH = async (req: Request, {params}) => {
     try {
         await connectToDB();
 
@@ -44,7 +44,11 @@ export const PATCH = async (req: NextApiRequest, {params}) => {
             )
         }
 
-        const {prompt, tag} = req.body;
+        const data = await req.json();
+        console.log("Req body");
+        console.log(data);
+
+        const {prompt, tag} = data;
 
         res.prompt = prompt
         res.tag = tag
