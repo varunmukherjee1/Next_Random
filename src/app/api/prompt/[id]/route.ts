@@ -1,13 +1,12 @@
 import Prompt from "@/models/prompt"
 import { connectToDB } from "@/utils/database"
 import { NextApiRequest} from "next";
-
-export const GET = async (req: NextApiRequest) => {
+//@ts-ignore
+export const GET = async (req: NextApiRequest, {params}) => {
     try {
         await connectToDB();
 
-        console.log(req.query.id);
-        const pid = req.query.id;
+        const pid = params.id;
 
         const res = await Prompt.findOne({_id: pid}).populate('creator')
         if(!res){
@@ -30,13 +29,12 @@ export const GET = async (req: NextApiRequest) => {
         )
     }    
 }
-
-export const PATCH = async (req: NextApiRequest) => {
+//@ts-ignore
+export const PATCH = async (req: NextApiRequest, {params}) => {
     try {
         await connectToDB();
 
-        console.log(req.query.id);
-        const pid = req.query.id;
+        const pid = params.id;
 
         const res = await Prompt.findOne({_id: pid}).populate('creator')
         if(!res){
@@ -66,14 +64,13 @@ export const PATCH = async (req: NextApiRequest) => {
         )
     }
 }
-
-export const DELETE = async (req: NextApiRequest) => {
+//@ts-ignore
+export const DELETE = async (req: NextApiRequest,{params}) => {
     try {
         
         await connectToDB();
 
-        console.log(req.query.id);
-        const pid = req.query.id;
+        const pid = params.id;
 
         await Prompt.findByIdAndRemove(pid)
 

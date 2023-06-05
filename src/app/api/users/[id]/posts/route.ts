@@ -2,16 +2,17 @@ import Prompt from "@/models/prompt";
 import { connectToDB } from "@/utils/database";
 import { NextApiRequest} from "next";
 
-export const GET = async (req: NextApiRequest) => {
+export const GET = async (req: NextApiRequest, {params}) => {
     try {
         await connectToDB()
 
-        console.log(req.query.id);
-        const pid = req.query.id;
+        const pid = params.id;
+        console.log(pid);
         const prompts = await Prompt.find({ creator: pid }).populate("creator")
 
         return new Response(JSON.stringify(prompts), { status: 200 })
     } catch (error) {
-        return new Response("Failed to fetch prompts created by user", { status: 500 })
+        console.log(error);
+        return new Response("Failed to fetch prompts created by usergand mara", { status: 500 })
     }
 } 

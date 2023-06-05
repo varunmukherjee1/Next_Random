@@ -13,8 +13,8 @@ interface Props {
     name: string,
     desc: string,
     data: Prompt[],
-    handleEdit: () => void,
-    handleDelete: () => void
+    handleEdit: (post: Prompt) => void,
+    handleDelete: (post: Prompt) => void
 }
 
 const Profile: React.FC<Props> = (props) => {
@@ -32,7 +32,7 @@ const Profile: React.FC<Props> = (props) => {
                         <PromptCard
                             key = {i}
                             post = {post}
-                            handleEdit = {() => {}}
+                            handleEdit = {() => {props.handleEdit(post)}}
                             handleDelete = {() => {}}
                         />
                     )

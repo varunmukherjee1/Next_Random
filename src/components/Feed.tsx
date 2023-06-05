@@ -24,8 +24,6 @@ const Feed: React.FC<Props> = () => {
       const res = await fetch("/api/prompt")
 
       const data = await res.json();
-
-      console.log(data);
       setPrompts(data);
     } catch (error) {
       console.log(error);
