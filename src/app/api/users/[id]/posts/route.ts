@@ -7,7 +7,6 @@ export const GET = async (req: NextApiRequest, {params}) => {
         await connectToDB()
 
         const pid = params.id;
-        console.log(pid);
         const prompts = await Prompt.find({ creator: pid }).populate("creator")
 
         return new Response(JSON.stringify(prompts), { status: 200 })

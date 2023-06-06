@@ -34,6 +34,7 @@ const Profile: React.FC<Props> = (props) => {
                             post = {post}
                             handleEdit = {() => {props.handleEdit(post)}}
                             handleDelete = {() => {props.handleDelete(post)}}
+                            handleTagClick={() => {}}
                         />
                     )
                 })

@@ -38,7 +38,7 @@ const Nav:React.FC<Props> = () => {
             width={30}
             className = "object-contain"
           />
-          <p className = "logo_text">Next-Prompts</p>
+          <p className = "logo_text">Next-Random</p>
       </Link>
 
       {/* Desktop Navigation */}

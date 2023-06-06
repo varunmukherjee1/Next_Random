@@ -45,8 +45,6 @@ export const PATCH = async (req: Request, {params}) => {
         }
 
         const data = await req.json();
-        console.log("Req body");
-        console.log(data);
 
         const {prompt, tag} = data;
 

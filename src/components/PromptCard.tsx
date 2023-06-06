@@ -15,6 +15,7 @@ interface Props {
   post: Prompt,
   handleEdit: () => void,
   handleDelete: () => void,
+  handleTagClick: () => void,
 }
 
 const PromptCard:React.FC<Props> = (props) => {
@@ -30,10 +31,29 @@ const PromptCard:React.FC<Props> = (props) => {
     setTimeout(() => setCopied("false"),3000);
   }
 
+  const handleProfileClick = () => {
+
+    console.log(props.post.creator._id);
+    //@ts-ignore
+    console.log(session?.user.id);
+    //@ts-ignore
+    if(props.post.creator._id === session?.user.id){
+      router.push("/profile")
+    }
+    else{
+
+      router.push(`/profile/${props.post.creator._id}?name=${props.post.creator.username}`)
+    }
+
+  }
+
   return (
     <div className = 'prompt_card'>
       <div className = 'flex justify-between items-start gap-5'>
-        <div className = 'flex-1 flex justify-start items-center gap-3 cursor-pointer'>
+        <div 
+          className = 'flex-1 flex justify-start items-center gap-3 cursor-pointer'
+          onClick = {handleProfileClick}
+        >
           <Image
             src = {props.post.creator.image}
             alt = "user_img"
@@ -69,6 +89,7 @@ const PromptCard:React.FC<Props> = (props) => {
       <p className='my-4 font-satoshi text-sm text-gray-700'>{props.post.prompt}</p>
       <p
         className='font-inter text-sm blue_gradient cursor-pointer'
+        onClick = {props.handleTagClick}
       >
         #{props.post.tag}
       </p>
