@@ -9,8 +9,8 @@ interface Props {
 }
 
 export const metadata = {
-    title: "Next Prompts",
-    description: "Discover & Search AI prompts"
+    title: "Next Random",
+    description: "Discover & Search your thoughts"
 }
 
 const RootLayout: React.FC<Props> = ({children}) => {
