@@ -24,9 +24,7 @@ const PublicProfile:React.FC<Props> = (props) => {
   const [userPosts, setUserPosts] = useState<Prompt[]>([]);
 
   const fetchPosts = async () => {
-    const response = await fetch(`/api/users/${props.params.id}/posts`,{
-      cache: 'no-cache',
-    });
+    const response = await fetch(`/api/users/${props.params.id}/posts`);
     const data = await response.json();
 
     setUserPosts(data);

@@ -21,9 +21,7 @@ const PersonalProfile = () => {
 
   const fetchPosts = async () => {
     //@ts-ignore
-    const res = await fetch(`/api/users/${session?.user.id}/posts`,{
-      cache: 'no-cache',
-    })
+    const res = await fetch(`/api/users/${session?.user.id}/posts`)
     const data = await res.json();
 
     setMyPosts(data)

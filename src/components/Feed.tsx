@@ -26,7 +26,9 @@ const Feed: React.FC<Props> = () => {
   const fetchPrompts = async () => {
     try {
       const res = await fetch("/api/prompt",{
-        cache: 'no-cache',
+        next: {
+          revalidate: 1
+        }
       })
 
       const data = await res.json();
