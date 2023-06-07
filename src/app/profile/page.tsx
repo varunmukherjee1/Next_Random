@@ -24,8 +24,6 @@ const PersonalProfile = () => {
     const res = await fetch(`/api/users/${session?.user.id}/posts`,{
       next: {
         revalidate: 0,
-        //@ts-ignore
-        cache: 'no-store'
       }
     })
     const data = await res.json();

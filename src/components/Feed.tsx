@@ -28,8 +28,6 @@ const Feed: React.FC<Props> = () => {
       const res = await fetch("/api/prompt",{
         next: {
           revalidate: 0,
-          //@ts-ignore
-          cache: 'no-store'
         }
       })
 

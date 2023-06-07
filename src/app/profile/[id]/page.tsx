@@ -27,8 +27,6 @@ const PublicProfile:React.FC<Props> = (props) => {
     const response = await fetch(`/api/users/${props.params.id}/posts`,{
       next: {
         revalidate: 0,
-        //@ts-ignore
-        cache: 'no-store'
       }
     });
     const data = await response.json();
