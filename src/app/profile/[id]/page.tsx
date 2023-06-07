@@ -25,7 +25,7 @@ const PublicProfile:React.FC<Props> = (props) => {
 
   const fetchPosts = async () => {
     const response = await fetch(`/api/users/${props.params.id}/posts`,{
-      cache: 'no-store',
+      cache: 'no-cache',
     });
     const data = await response.json();
 

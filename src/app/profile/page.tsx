@@ -22,7 +22,7 @@ const PersonalProfile = () => {
   const fetchPosts = async () => {
     //@ts-ignore
     const res = await fetch(`/api/users/${session?.user.id}/posts`,{
-      cache: 'no-store',
+      cache: 'no-cache',
     })
     const data = await res.json();
 
